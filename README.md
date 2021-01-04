@@ -53,4 +53,18 @@ Install dependencies (listed in the *package.xml* and *CMakeLists.txt* file) usi
 
     rosdep install teb_local_planner
 
-
+## Run docker
+ - docker build and docker run
+``` bash
+$ docker build -t teb_ros .
+$ docker run -it --rm --name teb -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:rw --runtime=nvidia teb_ros
+```
+ - once in docker
+``` bash
+$ source $CATKIN_WS/devel/setup.sh
+$ roslaunch teb_local_planner test_optim_node.launch
+```
+ - config the optimization setup
+``` bash
+$ rosrun rqt_reconfigure rqt_reconfigure
+```
